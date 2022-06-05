@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Git lfs pull using github action cache
-       uses: cresh-io/action-cached-git-lfs-pull@v1.0.0
+        uses: cresh-io/action-cached-git-lfs-pull@v1.0.0
 
       - name: Node.js setup
         uses: actions/setup-node@v1
