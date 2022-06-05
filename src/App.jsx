@@ -6,13 +6,15 @@ import backgrounds from './bgs';
 
 function App() {
   const [background, setBackground] = useState()
+  const [clientProfile, setClientProfile] = useState(0)
 
   useEffect(() => {
     setBackground(backgrounds[Math.floor(Math.random() * backgrounds.length)])
   }, [])
 
   const launchFlyff = () => {
-    const webview = new WebviewWindow('Flyff', {
+    setClientProfile(clientProfile+1);
+    const webview = new WebviewWindow(`Flyff${clientProfile}`, {
       title: 'Flyff Universe',
       url: 'https://universe.flyff.com/play'
     })
