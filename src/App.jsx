@@ -1,10 +1,15 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { WebviewWindow } from '@tauri-apps/api/window'
-import logo from './logo.svg'
+import logo from './flyffu.png'
 import './App.css'
+import backgrounds from './bgs';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [background, setBackground] = useState()
+
+  useEffect(() => {
+    setBackground(backgrounds[Math.floor(Math.random() * backgrounds.length)])
+  }, [])
 
   const launchFlyff = () => {
     const webview = new WebviewWindow('Flyff', {
@@ -17,19 +22,20 @@ function App() {
     })
     
   }
-  
 
   return (
-    <div className="App">
+    <div style={{backgroundImage: `url(${background}`, backgroundSize: 'cover', backgroundPosition: 'center'}} className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Sunkist Test</p>
+        <img src={logo} className="flyffLogo" alt="Flyff Universe" />
         <p>
-          <button type="button" onClick={() => launchFlyff()}>
-            Launch Flyff
+          <button type="button" className="bg-sky-600 p-2 w-52 rounded mt-6 hover:bg-sky-700" onClick={() => launchFlyff()}>
+            Play
           </button>
         </p>
       </header>
+      <div className="col-span-4 bg-slate-200">
+
+      </div>
     </div>
   )
 }
